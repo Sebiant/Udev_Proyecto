@@ -55,7 +55,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Institutp</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -74,7 +74,6 @@
         <div class="modal-footer">
             <input type="hidden" name="id_instituto" id="id_instituto">
             <input type="hidden" name="operacion" id="operacion">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <input type="submit" name="action" id="action" class="btn btn-success" value ="Crear">
       </div>
       </div>
