@@ -20,7 +20,7 @@ switch ($accion) {
 
         $sql = "INSERT INTO docentes (tipo_documento, numero_documento, nombres, apellidos, especialidad, descripcion_especialidad, telefono, direccion, email, declara_renta, retenedor_iva) 
                 VALUES ('$tipo_documento', '$numero_documento', '$nombres', '$apellidos', '$especialidad', '$descripcion_especialidad', '$telefono', '$direccion', '$email', $declara_renta, $retenedor_iva)";
-
+        
         if ($conn->query($sql) === TRUE) {
             echo "Nuevo registro creado exitosamente.";
         } else {
@@ -101,23 +101,24 @@ switch ($accion) {
             break;
 
     default:
-        $sql = "SELECT * FROM docentes";
+        $sql = "SELECT * FROM docentes WHERE estado = 1";
         $result = $conn->query($sql);
 
-        $data = [];
+            $data = [];
 
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $row['declara_renta'] = $row['declara_renta'] ? "Sí" : "No";
-                $row['retenedor_iva'] = $row['retenedor_iva'] ? "Sí" : "No";
-                $row['estado'] = $row['estado'] ? "activo" : "innactivo";
-                $data[] = $row;
+            $data = [];
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $row['declara_renta'] = $row['declara_renta'] ? "Sí" : "No";
+                    $row['retenedor_iva'] = $row['retenedor_iva'] ? "Sí" : "No";
+                    $data[] = $row;
+                }
             }
-        }
 
-        header('Content-Type: application/json');
-        echo json_encode($data);
-        break;
-}
-$conn->close();
+            header('Content-Type: application/json');
+            echo json_encode(['data' => $data]);
+            break;
+    }
+    $conn->close();
 ?>
