@@ -27,7 +27,7 @@ $(document).ready(function() {
             },
             {
                 data: null,
-                defaultContent: '<button class="btn btn-primary w-100 btn-delete">Borrar</button>',
+                defaultContent: '<button class="btn btn-danger w-100 btn-delete">Borrar</button>',
                 orderable: false
             }
         ]

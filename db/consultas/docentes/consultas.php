@@ -19,7 +19,7 @@ switch ($accion) {
         $retenedor_iva = isset($_POST['retenedor_iva']) ? 1 : 0;
 
         $sql = "INSERT INTO docentes (tipo_documento, numero_documento, nombres, apellidos, especialidad, descripcion_especialidad, telefono, direccion, email, declara_renta, retenedor_iva) 
-                VALUES ('$tipo_documento', '$numero_documento', '$nombres', '$apellidos', '$especialidad', '$descripcion_especialidad', '$telefono', '$direccion', '$email', $declara_renta, $retenedor_iva)";
+                VALUES ('$tipo_documento', '$numero_documento', '$nombres', '$apellidos', '$especialidad', '$descripcion_especialidad', '$telefono', '$direccion', '$email', '$declara_renta', '$retenedor_iva')";
         
         if ($conn->query($sql) === TRUE) {
             echo "Nuevo registro creado exitosamente.";
@@ -29,50 +29,53 @@ switch ($accion) {
         break;
 
     case 'editar':
-    $id_docente = $_POST['id_docente'];
+        $id_docente = $_POST['id_docente'];
 
-    $sql_select = "SELECT * FROM docentes WHERE id_docente='$id_docente'";
-    $result = $conn->query($sql_select);
+        $sql_select = "SELECT * FROM docentes WHERE id_docente='$id_docente'";
+        $result = $conn->query($sql_select);
 
-    if ($result->num_rows > 0) {
-        $docente = $result->fetch_assoc();
+        if ($result->num_rows > 0) {
+            $docente = $result->fetch_assoc();
 
-        $tipo_documento = isset($_POST['tipo_documento']) ? $_POST['tipo_documento'] : $docente['tipo_documento'];
-        $numero_documento = isset($_POST['numero_documento']) ? $_POST['numero_documento'] : $docente['numero_documento'];
-        $nombres = isset($_POST['nombres']) ? $_POST['nombres'] : $docente['nombres'];
-        $apellidos = isset($_POST['apellidos']) ? $_POST['apellidos'] : $docente['apellidos'];
-        $especialidad = isset($_POST['especialidad']) ? $_POST['especialidad'] : $docente['especialidad'];
-        $descripcion_especialidad = isset($_POST['descripcion_especialidad']) ? $_POST['descripcion_especialidad'] : $docente['descripcion_especialidad'];
-        $telefono = isset($_POST['telefono']) ? $_POST['telefono'] : $docente['telefono'];
-        $direccion = isset($_POST['direccion']) ? $_POST['direccion'] : $docente['direccion'];
-        $email = isset($_POST['email']) ? $_POST['email'] : $docente['email'];
-        $declara_renta = isset($_POST['declara_renta']) ? $_POST['declara_renta'] : $docente['declara_renta'];
-        $retenedor_iva = isset($_POST['retenedor_iva']) ? $_POST['retenedor_iva'] : $docente['retenedor_iva'];
-        $estado = isset($_POST['estado']) ? $_POST['estado'] : $docente['estado'];
+            // Verificar y manejar los valores de checkboxes
+            $declara_renta = isset($_POST['declara_renta']) ? 1 : 0; // Si no está seleccionado, valor es 0
+            $retenedor_iva = isset($_POST['retenedor_iva']) ? 1 : 0; // Si no está seleccionado, valor es 0
 
-        $sql_update = "UPDATE docentes SET 
-                        tipo_documento='$tipo_documento', 
-                        numero_documento='$numero_documento', 
-                        nombres='$nombres', 
-                        apellidos='$apellidos', 
-                        especialidad='$especialidad', 
-                        descripcion_especialidad='$descripcion_especialidad', 
-                        telefono='$telefono', 
-                        direccion='$direccion', 
-                        email='$email', 
-                        declara_renta='$declara_renta', 
-                        retenedor_iva='$retenedor_iva',
-                        estado='$estado'
-                        WHERE id_docente='$id_docente'";
+            // Otros campos
+            $tipo_documento = isset($_POST['tipo_documento']) ? $_POST['tipo_documento'] : $docente['tipo_documento'];
+            $numero_documento = isset($_POST['numero_documento']) ? $_POST['numero_documento'] : $docente['numero_documento'];
+            $nombres = isset($_POST['nombres']) ? $_POST['nombres'] : $docente['nombres'];
+            $apellidos = isset($_POST['apellidos']) ? $_POST['apellidos'] : $docente['apellidos'];
+            $especialidad = isset($_POST['especialidad']) ? $_POST['especialidad'] : $docente['especialidad'];
+            $descripcion_especialidad = isset($_POST['descripcion_especialidad']) ? $_POST['descripcion_especialidad'] : $docente['descripcion_especialidad'];
+            $telefono = isset($_POST['telefono']) ? $_POST['telefono'] : $docente['telefono'];
+            $direccion = isset($_POST['direccion']) ? $_POST['direccion'] : $docente['direccion'];
+            $email = isset($_POST['email']) ? $_POST['email'] : $docente['email'];
+            $estado = isset($_POST['estado']) ? $_POST['estado'] : $docente['estado'];
 
-        if ($conn->query($sql_update) === TRUE) {
-            echo "Registro actualizado exitosamente.";
+            $sql_update = "UPDATE docentes SET 
+                            tipo_documento='$tipo_documento', 
+                            numero_documento='$numero_documento', 
+                            nombres='$nombres', 
+                            apellidos='$apellidos', 
+                            especialidad='$especialidad', 
+                            descripcion_especialidad='$descripcion_especialidad', 
+                            telefono='$telefono', 
+                            direccion='$direccion', 
+                            email='$email', 
+                            declara_renta='$declara_renta', 
+                            retenedor_iva='$retenedor_iva',
+                            estado='$estado'
+                            WHERE id_docente='$id_docente'";
+
+            if ($conn->query($sql_update) === TRUE) {
+                echo "Registro actualizado exitosamente.";
+            } else {
+                echo "Error al actualizar el registro: " . $conn->error;
+            }
         } else {
-            echo "Error al actualizar el registro: " . $conn->error;
+            echo "No se encontró el registro del docente.";
         }
-    } else {
-        echo "No se encontró el registro del docente.";
-    }
     break;
 
 
@@ -103,8 +106,6 @@ switch ($accion) {
     default:
         $sql = "SELECT * FROM docentes WHERE estado = 1";
         $result = $conn->query($sql);
-
-            $data = [];
 
             $data = [];
 
