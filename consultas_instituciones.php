@@ -80,9 +80,33 @@
     </div>
   </div>
 </div>
+    <div id="editModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Institucion</h5>
+                </div>
+                <form id="editForm">
+                    <div class="modal-body">
+                        <input type="hidden" name="id_instituto">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" name="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="direccion">Direccion</label>
+                            <input type="text" class="form-control" name="numero_documento">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div> 
+        </div>
+  </div>
 
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity= "sha384-H+K7U5CnXl1h5ywQ6nKM/YUxl9F3hi+ofewM6Dct7/q5ebf1gRPlivXoF5Pj2JYh2" crossorigin="anonymous"></script>
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity= "sha384-H+K7U5CnXl1h5ywQ6nKM/YUxl9F3hi+ofewM6Dct7/q5ebf1gRPlivXoF5Pj2JYh2" crossorigin="anonymous"></script>
 
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
