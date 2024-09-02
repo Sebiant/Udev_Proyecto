@@ -3,7 +3,7 @@ $(document).ready(function() {
         processing: true,
         serverSide: true,
         ajax: {
-            url: "db/consultas/docentes/consultas.php?accion=consultar",
+            url: "docentes-controlador.php?accion=consultar",
             type: "POST",
             dataSrc: 'data'
         },
