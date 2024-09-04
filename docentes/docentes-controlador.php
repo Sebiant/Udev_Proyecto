@@ -113,6 +113,7 @@ switch ($accion) {
                 while ($row = $result->fetch_assoc()) {
                     $row['declara_renta'] = $row['declara_renta'] ? "Sí" : "No";
                     $row['retenedor_iva'] = $row['retenedor_iva'] ? "Sí" : "No";
+                    $row['estado'] = $row['estado'] ? "activo" : "innactivo";
                     $data[] = $row;
                 }
             }

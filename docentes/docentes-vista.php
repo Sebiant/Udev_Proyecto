@@ -35,6 +35,7 @@
                         <th>Email</th>
                         <th>Renta</th>
                         <th>IVA</th>
+                        <th>estado</th>
                         <th>Modificar</th>
                         <th>Borrar</th>
                     </tr>
