@@ -8,9 +8,10 @@ $(document).ready(function() {
             dataSrc: 'data'
         },
         columns: [
-            { "data": "id_docente" },
+            { "data": "id_institucion" },
             { "data": "nombre" },
             { "data": "direccion" },
+            { "data": "estado" },
             {
                 data: null,
                 defaultContent: '<button class="btn btn-primary w-100 btn-modify">Modificar</button>',

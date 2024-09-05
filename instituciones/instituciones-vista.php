@@ -28,7 +28,7 @@
         <br />
 
         <div class="table-responsive">
-            <table id="datos_docente" class="table table-bordered table-striped">
+            <table id="datos_institucion" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Nombres</th>
