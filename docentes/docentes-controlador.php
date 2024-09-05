@@ -104,7 +104,7 @@ switch ($accion) {
             break;
 
     default:
-        $sql = "SELECT * FROM docentes WHERE estado = 1";
+        $sql = "SELECT * FROM docentes";
         $result = $conn->query($sql);
 
             $data = [];
