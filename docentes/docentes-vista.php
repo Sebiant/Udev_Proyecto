@@ -177,7 +177,10 @@
             </div>
         </div>
     </div>
+
     <?php
     include_once '../componentes/footer.php';
     ?>
+    <script src="js/consultas_docente.js"></script>
+    <script src="js/datatable_docentes.js"></script>
 
