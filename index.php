@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="../css/bootstrap.rtl.css">
-    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.rtl.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
 
 </head>
 <body>
@@ -22,7 +22,7 @@
           <a class="nav-link" href="docentes/docentes-vista.php">Docentes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="cuentas_de_cobro/cuentas_de_cobro-vista.php">Cuentas de Cobro</a>
+          <a class="nav-link" href="cuentas-de-cobro/cuentas-de-cobro-vista.php">Cuentas de Cobro</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="asistencias/asistencias-vista.php">Asistencias</a>
