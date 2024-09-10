@@ -23,8 +23,8 @@
             <table id="datos_institucion" class="table table-bordered table-striped">
                 <thead>
                     <tr>
+                        <th>Id</th>
                         <th>Nombres</th>
-                        <th>Apellidos</th>
                         <th>Dirección</th>
                         <th>Estado</th>
                         <th>Modificar</th>
