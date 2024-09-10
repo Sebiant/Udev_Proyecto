@@ -1,10 +1,10 @@
 function crearInstitucion() {
-    const formData = new FormData(document.getElementById('formInstitucion'));
+    const formData = new FormData(document.getElementById('formInstituciones'));
 
     console.log('Acción: Crear');
     console.log('Datos del Formulario:', ...formData.entries());
 
-    fetch('db/consultas/instituciones/consultas.php?accion=crear', {
+    fetch('instituciones-controlador.php?accion=crear', {
         method: 'POST',
         body: formData
     })
@@ -20,12 +20,12 @@ function crearInstitucion() {
 }
 
 function editarInstitucion() {
-    const formData = new FormData(document.getElementById('formInstitucion'));
-    formData.append('id_institucion', document.getElementById('id_institucion').value);
+    const formData = new FormData(document.getElementById('formInstituciones'));
+
     console.log('Acción: Editar');
     console.log('Datos del Formulario:', ...formData.entries());
 
-    fetch('db/consultas/instituciones/consultas.php?accion=editar', {
+    fetch('instituciones-controlador.php?accion=editar', {
         method: 'POST',
         body: formData
     })
@@ -45,7 +45,7 @@ function activarInstitucion() {
 
     console.log('ID Institucion a Activar:', id_institucion);
 
-    fetch('db/consultas/instituciones/consultas.php?accion=activar', {
+    fetch('instituciones-controlador.php?accion=activar', {
         method: 'POST',
         body: new URLSearchParams({ id_institucion })
     })

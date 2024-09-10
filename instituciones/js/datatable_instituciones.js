@@ -3,7 +3,7 @@ $(document).ready(function() {
         processing: true,
         serverSide: true,
         ajax: {
-            url: "docentes-controlador.php?accion=consultar",
+            url: "instituciones-controlador.php?accion=consultar",
             type: "POST",
             dataSrc: 'data'
         },
@@ -27,17 +27,18 @@ $(document).ready(function() {
     
     $('#datos_institucion').on('click', '.btn-modify', function() {
         var data = table.row($(this).parents('tr')).data();
-        var id_institucion = data.id_institucion;
+        var idInstitucion = data.id_institucion;
 
         $.ajax({
-            url: 'db/consultas/instituciones/consultas.php',
+            url: 'instituciones-controlador.php',
             type: 'POST',
-            data: { id_institucion: id_institucion },
+            data: { id_institucion: idInstitucion },
             success: function(response) {
                 var institucion = response.data[0];
-                $('#editForm [name="id_institucion"]').val(id_institucion);
+                $('#editForm [name="id_institucion"]').val(institucion.id_institucion);
                 $('#editForm [name="nombres"]').val(institucion.nombres);
                 $('#editForm [name="direccion"]').val(institucion.direccion);
+                $('#editForm [name="estado"]').prop('checked', institucion.estado === "Sí");
                 $('#editModal').modal('show');
             },
             error: function() {
@@ -49,7 +50,7 @@ $(document).ready(function() {
         e.preventDefault();
 
         $.ajax({
-            url: 'db/consultas/instituciones/consultas.php?accion=editar',
+            url: 'instituciones-controlador.php?accion=editar',
             type: 'POST',
             data: $(this).serialize(),
             success: function(response) {
@@ -66,19 +67,19 @@ $(document).ready(function() {
 
     $('#datos_institucion').on('click', '.btn-delete', function() {
         var data = table.row($(this).parents('tr')).data();
-        var id_institucion = data.id_institucion;
+        var idInstitucion = data.id_institucion;
 
         if (confirm('¿Estás seguro de que quieres desactivar a este docente?')) {
             $.ajax({
-                url: 'db/consultas/instituciones/consultas.php?accion=eliminar',
+                url: 'instituciones-controlador.php?accion=eliminar',
                 type: 'POST',
-                data: { id_institucion: id_institucion },
+                data: { id_institucion: idInstitucion },
                 success: function(response) {
                     table.ajax.reload();
                     alert('Docente desactivado exitosamente.');
                 },
                 error: function() {
-                    alert('Error al desactivar el docente.');
+                    alert('Error al desactivar la institucion.');
                 }
             });
         }

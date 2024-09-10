@@ -22,17 +22,20 @@ switch ($accion) {
 
     case 'editar':
         $id_institucion = $_POST['id_institucion'];
-        $sql_select = "SELECT * FROM instituciones WHERE id_instituciones='$id_institucion'";
+
+        $sql_select = "SELECT * FROM instituciones WHERE id_institucion='$id_institucion'";
         $result = $conn->query($sql_select);
 
         if ($result->num_rows > 0) {
             $instituto = $result->fetch_assoc();
 
-            // Verificar y manejar los valores de checkboxes
-            $Estado = isset($_POST['estado']) ? 1 : 0; // Si no está seleccionado, valor es 0   
+            
+             // Si no está seleccionado, valor es 0   
             // Otros campos         
             $Nombre = isset($_POST['nombre']) ? $_POST['nombre'] : $instituto['nombre'];
             $Direccion = isset($_POST['direccion']) ? $_POST['direccion'] : $instituto['direccion'];
+            $Estado = isset($_POST['estado']) ? $_POST['estado'] : $instituto['estado'];
+            
             $sql_update = "UPDATE instituciones SET  
                             nombre='$Nombre', 
                             direccion='$Direccion', 
@@ -83,7 +86,7 @@ switch ($accion) {
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    $row['estado'] = $row['estado'] ? "Sí" : "No";
+                    $row['estado'] = $row['estado'] ? "activo" : "innactivo";
                     $data[] = $row;
                 }
             }
