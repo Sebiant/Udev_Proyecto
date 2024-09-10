@@ -1,25 +1,11 @@
 <?php
-include 'db/conexion.php';
+include '../conexion.php';
 
-$sql = "SELECT id_docente, nombres, apellidos FROM docentes WHERE estado = 1";
+$sql = "SELECT id_docente, nombres, apellidos FROM docentes";
 $result = $conn->query($sql);
+
+include_once '../componentes/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Asistencias</title>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.rtl.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-</head>
-<body>
-
     <div class="container">
         <h1 class="text-center">Gestión de Asistencias</h1>
 
@@ -89,18 +75,10 @@ $result = $conn->query($sql);
             </div>
         </div>
     </div>
+    <?php
+    include_once '../componentes/footer.php';
+    ?>
+    <script src="js/consultas_asistencias.js"></script>
+    <script src="js/datatable_asistencias.js"></script>
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!-- DataTables JS -->
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Custom JS Files -->
-    <script src="js/asistencias/consulta.js"></script>
-    <script src="js/asistencias/datatable.js"></script>
-</body>
-</html>

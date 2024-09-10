@@ -3,7 +3,7 @@ $(document).ready(function() {
         "processing": true,
         "serverSide": true,
         "ajax": {
-            "url": "db/consultas/asistencias/consultas.php?accion=default", // Ruta al archivo PHP
+            "url": "asistencias-controlador.php?accion=default",
             "type": "GET"
         },
         "columns": [
@@ -30,7 +30,7 @@ $(document).ready(function() {
 
         if (confirm('¿Estás seguro de que quieres eliminar esta asistencia?')) {
             $.ajax({
-                url: 'db/consultas/asistencias/consultas.php?accion=eliminar',
+                url: 'asistencias-controlador.php?accion=eliminar',
                 type: 'POST',
                 data: { id_asistencia: idAsistencia },
                 success: function(response) {

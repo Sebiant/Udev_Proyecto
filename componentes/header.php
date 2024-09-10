@@ -16,16 +16,35 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="#">Hidden brand</a>
+      <a class="navbar-brand" href="../index.php">Udev</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <li class="nav-item">
+          <a class="nav-link" href="../docentes/docentes-vista.php">Docentes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="../cuentas-de-cobro/cuentas-de-cobro-vista.php">Cuentas de Cobro</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          <a class="nav-link" href="../asistencias/asistencias-vista.php">Asistencias</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../instituciones/instituciones-vista.php">Instituciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../salones/salones-vista.php">Salones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../programador/programador-vista.php">Programador</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../modulos/modulos-vista.php">Módulos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../materias/materias-vista.php">Materias</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../programas/programas-vista.php">Programas</a>
         </li>
       </ul>
       <form class="d-flex" role="search">
