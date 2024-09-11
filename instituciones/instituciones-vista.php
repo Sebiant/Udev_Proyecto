@@ -58,6 +58,10 @@
             <label for="direccion" class="form-label">Dirección:</label>
             <input type="text" name="direccion" id="direccion" class="form-control">
           </div>
+          <div class="form-check mb-3">
+            <input type="checkbox" class="form-check-input" name="retenedor_iva" id="retenedor_iva">
+            <label class="form-check-label" for="retenedor_iva">Estado</label>
+          </div>
           <div class="modal-footer">
               <button class="btn btn-success" onclick="crearInstitucion()">Guardar</button>
           </div>

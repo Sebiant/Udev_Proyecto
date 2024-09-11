@@ -3,7 +3,7 @@ $(document).ready(function() {
         processing: true,
         serverSide: true,
         ajax: {
-            url: "instituciones-controlador.php?accion=consultar",
+            url: "instituciones-controlador.php?",
             type: "POST",
             dataSrc: 'data'
         },
