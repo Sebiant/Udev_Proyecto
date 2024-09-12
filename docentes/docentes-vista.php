@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
 
-    <link rel="stylesheet" href="../css/bootstrap.rtl.css">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-
-</head>
-<body>
+    <?php
+    include_once '../componentes/header.php';
+    ?>
 <div class="container">
         <h1 class="text-center">Docentes</h1>
 
@@ -43,6 +35,7 @@
                         <th>Email</th>
                         <th>Renta</th>
                         <th>IVA</th>
+                        <th>estado</th>
                         <th>Modificar</th>
                         <th>Borrar</th>
                     </tr>
@@ -185,17 +178,9 @@
         </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- DataTables -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    
+    <?php
+    include_once '../componentes/footer.php';
+    ?>
     <script src="js/consultas_docente.js"></script>
     <script src="js/datatable_docentes.js"></script>
 
-</body>
-</html>

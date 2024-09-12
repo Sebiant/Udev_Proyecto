@@ -1,10 +1,10 @@
-function crearDocente() {
-    const formData = new FormData(document.getElementById('formDocente'));
+function crearInstitucion() {
+    const formData = new FormData(document.getElementById('formInstituciones'));
 
     console.log('Acción: Crear');
     console.log('Datos del Formulario:', ...formData.entries());
 
-    fetch('docentes-controlador.php?accion=crear', {
+    fetch('instituciones-controlador.php?accion=crear', {
         method: 'POST',
         body: formData
     })
@@ -19,13 +19,13 @@ function crearDocente() {
     });
 }
 
-function editarDocente() {
-    const formData = new FormData(document.getElementById('formDocente'));
+function editarInstitucion() {
+    const formData = new FormData(document.getElementById('formInstituciones'));
 
     console.log('Acción: Editar');
     console.log('Datos del Formulario:', ...formData.entries());
 
-    fetch('docentes-controlador.php?accion=editar', {
+    fetch('instituciones-controlador.php?accion=editar', {
         method: 'POST',
         body: formData
     })
@@ -40,14 +40,14 @@ function editarDocente() {
     });
 }
 
-function activarDocente() {
-    const id_docente = document.getElementById('id_docente_eliminar').value;
+function activarInstitucion() {
+    const id_institucion = document.getElementById('id_institucion_eliminar').value;
 
-    console.log('ID Docente a Activar:', id_docente);
+    console.log('ID Institucion a Activar:', id_institucion);
 
-    fetch('docentes-controlador.php?accion=activar', {
+    fetch('instituciones-controlador.php?accion=activar', {
         method: 'POST',
-        body: new URLSearchParams({ id_docente })
+        body: new URLSearchParams({ id_institucion })
     })
     .then(response => response.text())
     .then(data => {

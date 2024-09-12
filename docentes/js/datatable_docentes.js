@@ -3,7 +3,7 @@ $(document).ready(function() {
         processing: true,
         serverSide: true,
         ajax: {
-            url: "docentes-controlador.php?accion=consultar",
+            url: "docentes-controlador.php",
             type: "POST",
             dataSrc: 'data'
         },
@@ -20,6 +20,7 @@ $(document).ready(function() {
             { "data": "email" },
             { "data": "declara_renta" },
             { "data": "retenedor_iva" },
+            { "data": "estado" },
             {
                 data: null,
                 defaultContent: '<button class="btn btn-primary w-100 btn-modify">Modificar</button>',
@@ -38,7 +39,7 @@ $(document).ready(function() {
         var idDocente = data.id_docente;
 
         $.ajax({
-            url: 'db/consultas/docentes/consultas.php',
+            url: 'docentes-controlador.php',
             type: 'POST',
             data: { id_docente: idDocente },
             success: function(response) {
@@ -67,7 +68,7 @@ $(document).ready(function() {
         e.preventDefault();
 
         $.ajax({
-            url: 'db/consultas/docentes/consultas.php?accion=editar',
+            url: 'docentes-controlador.php?accion=editar',
             type: 'POST',
             data: $(this).serialize(),
             success: function(response) {
@@ -88,7 +89,7 @@ $(document).ready(function() {
 
         if (confirm('¿Estás seguro de que quieres desactivar a este docente?')) {
             $.ajax({
-                url: 'db/consultas/docentes/consultas.php?accion=eliminar',
+                url: 'docentes-controlador.php?accion=eliminar',
                 type: 'POST',
                 data: { id_docente: idDocente },
                 success: function(response) {
