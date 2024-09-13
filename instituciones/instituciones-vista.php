@@ -20,7 +20,7 @@
         <br />
 
         <div class="table-responsive">
-            <table id="datos_institucion" class="table table-bordered table-striped">
+            <table id="datos_instituciones" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -58,6 +58,10 @@
             <label for="direccion" class="form-label">Dirección:</label>
             <input type="text" name="direccion" id="direccion" class="form-control">
           </div>
+          <div class="form-check mb-3">
+            <input type="checkbox" class="form-check-input" name="estado" id="estado">
+            <label class="form-check-label" for="estado">Estado</label>
+          </div>
           <div class="modal-footer">
               <button class="btn btn-success" onclick="crearInstitucion()">Guardar</button>
           </div>
@@ -89,6 +93,10 @@
                             <label for="direccion">Dirección</label>
                             <input type="text" class="form-control" name="direccion">
                         </div>
+                        <div class="form-check mb-3">
+                            <input type="checkbox" class="form-check-input" name="estado" id="estado">
+                            <label class="form-check-label" for="estado">Estado</label>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
@@ -98,11 +106,11 @@
         </div>
     </div>
     
+    <?php
+    include_once '../componentes/footer.php';
+    ?>
     <script src="js/consultas_institucion.js"></script>
     <script src="js/datatable_instituciones.js"></script>
-<?php
-    include_once '../componentes/footer.php';
-?>
 
 
 
