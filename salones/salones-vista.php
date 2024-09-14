@@ -98,19 +98,19 @@
                         
                     <div class="mb-3">
                         <label for="nombre_salon" class="form-label">Nombre_salon:</label>
-                        <input type="text" name="nombre_salon" id="nombre_salon" class="form-control">
+                        <input type="text"  class="form-control" name="nombre_salon">
                     </div>
                     <div class="mb-3">
                         <label for="capacidad" class="form-label">Capacidad:</label>
-                        <input type="number" name="capacidad" id="capacidad" class="form-control">
+                        <input type="number"   class="form-control" name="capacidad">
                     </div>
                     <div class="mb-3">
                         <label for="descripcion" class="form-label">Descripcion:</label>
-                        <input type="text" name="descripcion" id="descripcion" class="form-control">
+                        <input type="text"   class="form-control" name="descripcion">
                     </div>
                     <div class="mb-3">
                         <label for="id_instituto" class="form-label">Id_institucion:</label>
-                        <input type="number" name="id_institucion" id="id_institucion" class="form-control">
+                        <input type="number" class="form-control" name="id_institucion">
                     </div>
                     <div class="form-check mb-3">
                         <input type="checkbox" class="form-check-input" name="estado" id="estado">
@@ -129,5 +129,5 @@
     <?php
     include_once '../componentes/footer.php';
     ?>
-    <script src="js/consultas_institucion.js"></script>
-    <script src="js/datatable_instituciones.js"></script>
+    <script src="js/consultas_salones.js"></script>
+    <script src="js/datatable_salones.js"></script>
