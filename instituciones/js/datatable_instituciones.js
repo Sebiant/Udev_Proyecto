@@ -1,9 +1,9 @@
 $(document).ready(function() {
-    var table = $('#datos_institucion').DataTable({
+    var table = $('#datos_instituciones').DataTable({
         processing: true,
         serverSide: true,
         ajax: {
-            url: "instituciones-controlador.php?",
+            url: "instituciones-controlador.php",
             type: "POST",
             dataSrc: 'data'
         },
@@ -25,12 +25,12 @@ $(document).ready(function() {
         ]
     });
     
-    $('#datos_institucion').on('click', '.btn-modify', function() {
+    $('#datos_instituciones').on('click', '.btn-modify', function() {
         var data = table.row($(this).parents('tr')).data();
         var idInstitucion = data.id_institucion;
 
         $.ajax({
-            url: 'instituciones-controlador.php',
+            url: 'instituciones-controlador.php?accion=modificar',
             type: 'POST',
             data: { id_institucion: idInstitucion },
             success: function(response) {
@@ -54,29 +54,29 @@ $(document).ready(function() {
             type: 'POST',
             data: $(this).serialize(),
             success: function(response) {
-                alert('Docente actualizado exitosamente.');
+                alert('Institucion actualizada exitosamente.');
                 table.ajax.reload();
                 $('#editModal').modal('hide');
             },
             error: function() {
-                alert('Error al actualizar el docente.');
+                alert('Error al actualizar la institucion.');
             }
         });
     });
 
 
-    $('#datos_institucion').on('click', '.btn-delete', function() {
+    $('#datos_instituciones').on('click', '.btn-delete', function() {
         var data = table.row($(this).parents('tr')).data();
         var idInstitucion = data.id_institucion;
 
-        if (confirm('¿Estás seguro de que quieres desactivar a este docente?')) {
+        if (confirm('¿Estás seguro de que quieres desactivar la institucion?')) {
             $.ajax({
                 url: 'instituciones-controlador.php?accion=eliminar',
                 type: 'POST',
                 data: { id_institucion: idInstitucion },
                 success: function(response) {
                     table.ajax.reload();
-                    alert('Docente desactivado exitosamente.');
+                    alert('Institucion desactivada exitosamente.');
                 },
                 error: function() {
                     alert('Error al desactivar la institucion.');
