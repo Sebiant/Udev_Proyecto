@@ -16,8 +16,9 @@ $(document).ready(function() {
             { "data": "monto" },
             { "data": "id_docente" },
             { "data": "estado" },
-
-
+            { "data": "notas"},
+            { "data": "tipo_de_pago" },
+            { "data": "metodo_pago"},
             
             {
                 data: null,
@@ -26,7 +27,7 @@ $(document).ready(function() {
             },
             {
                 data: null,
-                defaultContent: '<button class="btn btn-danger w-100 btn-delete">Borrar</button>',
+                defaultContent: '<button class="btn btn-danger w-100 btn-delete"><i class="bi bi-trash-fill"></i></button>',
                 orderable: false
             }
         ]
@@ -42,14 +43,14 @@ $(document).ready(function() {
             data: { id_cuenta: idCuenta},
             success: function(response) {
                 var cuenta = response.data[0];
-                $('#editForm [name="id_institucion"]').val(cuenta.id_cuenta);
+                $('#editForm [name="id_cuenta"]').val(cuenta.id_cuenta);
                 $('#editForm [name="nombres"]').val(cuenta.fecha);
-                $('#editForm [name="apellidos"]').val(cuenta.pago_excepcional);
-                $('#editForm [name="direccion"]').val(cuenta.valor_hora);
-                $('#editForm [name="direccion"]').val(cuenta.horas_trabajadas);
-                $('#editForm [name="direccion"]').val(cuenta.monto);
-                $('#editForm [name="direccion"]').val(cuenta.id_docente);
-                $('#editForm [name="estado"]').prop('checked', institucion.estado === "Sí");
+                $('#editForm [name="pago_excepcional"]').val(cuenta.pago_excepcional);
+                $('#editForm [name="valor_hora"]').val(cuenta.valor_hora);
+                $('#editForm [name="horas_trabajadas"]').val(cuenta.horas_trabajadas);
+                $('#editForm [name="monto"]').val(cuenta.monto);
+                $('#editForm [name="id_docente"]').val(cuenta.id_docente);
+                $('#editForm [name="estado"]').prop('checked', cuenta.estado === "Sí");
                 $('#editModal').modal('show');
             },
             error: function() {

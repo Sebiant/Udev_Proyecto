@@ -16,12 +16,12 @@ $(document).ready(function() {
             { "data": "estado" },
             {
                 data: null,
-                defaultContent: '<button class="btn btn-primary w-100 btn-modify">Modificar</button>',
+                defaultContent: '<button class="btn btn-primary w-100 btn-modify"><i class="bi bi-pencil"></i></button>',
                 orderable: false
             },
             {
                 data: null,
-                defaultContent: '<button class="btn btn-danger w-100 btn-delete">Borrar</button>',
+                defaultContent: '<button class="btn btn-danger w-100 btn-delete"><i class="bi bi-trash-fill"></i></button>',
                 orderable: false
             }
         ]

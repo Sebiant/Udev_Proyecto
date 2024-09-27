@@ -12,9 +12,12 @@ switch ($accion) {
         $monto = $_POST('monto');
         $id_docente = $_POST('id_docente');
         $estado = isset($_POST['estado']) ? 1 : 0;
+        $nota = $_POST('notas');
+        $tipo_pago = $_POST('tipo_de_pago');
+        $metodo_pago = $_POST('metodo_pago');
 
-        $sql = "INSERT INTO cuenta-de-cobro-docente (fecha, pago_excepcional, valor_hora, horas_trabajadas, monto, id_docente) 
-                VALUES ('$fecha','$pago_excepcional','$valor_hora','$horas_trabajadas','$monto','$id_docente')"; 
+        $sql = "INSERT INTO cuenta-de-cobro-docente (fecha, pago_excepcional, valor_hora, horas_trabajadas, monto, id_docente, notas, tipo_de_pago, metodo_pago) 
+                VALUES ('$fecha','$pago_excepcional','$valor_hora','$horas_trabajadas','$monto','$id_docente','$nota','$tipo_pago','$metodo_pago')"; 
 
         if ($conn ->query($sql)===TRUE) {
             echo "Registro exitoso";
@@ -38,6 +41,11 @@ switch ($accion) {
             $horas_trabajadas = isset($_POST['horas_trabajadas']) ? $_POST['horas_trabajadas'] : $cuenta['horas_trabajadas'];
             $monto = isset($_POST['monto']) ? $_POST['monto'] : $cuenta['monto'];
             $id_docente = isset($_POST['id_docente']) ? $_POST['id_docente'] : $cuenta['id_docente'];
+            $estado = isset($_POST['estado']) ? 1 : 0;
+            $nota = isset($_POST['notas']) ? $_POST['notas'] : $cuenta['notas'];
+            $tipo_pago = isset($_POST['tipo_de_pago']) ? $_POST['tipo_de_pago'] : $cuenta['tipo_de_pago'];
+            $metodo_pago = isset($_POST['metodo_pago']) ? $_POST['metodo_pago'] : $cuenta['metodo_pago'];
+
 
             $sql_update = "UPDATE cuenta-de-cobro-docente SET
                             fecha='$fecha',
@@ -45,7 +53,10 @@ switch ($accion) {
                             valor_hora='$valor_hora',
                             horas_trabajadas='$horas_trabajadas',
                             monto='$monto',
-                            id_docente='$id_docente'
+                            id_docente='$id_docente',
+                            notas='$nota',
+                            tipo_de_pago='$tipo_pago',
+                            metodo_pago='$metodo_pago'
 
                             WHERE id_cuenta = '$id_cuenta'";
         if ($conn ->query($sql_update)===TRUE) {
@@ -57,6 +68,18 @@ switch ($accion) {
             echo "No hay registros para actualizar.";
         }
         break;
+
+        $sql = "SELECT * FROM cuenta-de-cobro-docente";
+        $result = $conn->query($sql);
+
+            $data = [];
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $row['estado'] = $row['estado'] ? "activo" : "innactivo";
+                    $data[] = $row;
+                }
+            }
     
 
             header('Content-Type: application/json');
