@@ -16,7 +16,7 @@ $(document).ready(function() {
             { "data": "monto" },
             { "data": "id_docente" },
             { "data": "estado" },
-            { "data": "notas"},
+            { "data": "Notas"},
             { "data": "tipo_de_pago" },
             { "data": "metodo_pago"},
             
@@ -27,7 +27,7 @@ $(document).ready(function() {
             },
             {
                 data: null,
-                defaultContent: '<button class="btn btn-danger w-100 btn-delete"><i class="bi bi-trash-fill"></i></button>',
+                defaultContent: '<button class="btn btn-danger w-100 btn-delete">Borrar</i></button>',
                 orderable: false
             }
         ]
