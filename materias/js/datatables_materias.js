@@ -1,5 +1,3 @@
-
-
 $(document).ready(function() {
     var table = $('#datos_materia').DataTable({
         processing: true,
