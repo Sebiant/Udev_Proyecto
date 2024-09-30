@@ -69,8 +69,8 @@ switch ($accion) {
         }
         break;
 
-        case 'listar':
-        $sql = "SELECT * FROM cuenta-de-cobro-docente";
+    case 'listar':
+        $sql = "SELECT * FROM 'cuenta-de-cobro-docente'";
         $result = $conn->query($sql);
 
             $data = [];
@@ -85,9 +85,9 @@ switch ($accion) {
             echo json_encode(['data' => $data]);
             break;
 
-        default:
-            echo "Acción no válida.";
-            break;
+    default:
+        echo "Acción no válida.";
+        break;
     }
     $conn->close();
 ?>
