@@ -118,4 +118,4 @@
     include_once '../componentes/footer.php';
     ?>
     <script src="js/consultas_materias.js"></script>
-    <script src="js/datatable_materias.js"></script>
+    <script src="js/datatables_materias.js"></script>
