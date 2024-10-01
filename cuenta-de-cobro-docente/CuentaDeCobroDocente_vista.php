@@ -6,44 +6,62 @@
 <div class="container">
         <h1 class="text-center">Cuenta Docente</h1>
 
-    </div>
-
         <div class="row">
-            <div class="col-2 offset-10">
-                <div class="text-center">
-                    <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary w-100 " data-bs-toggle="modal" data-bs-target="#modalCuentaDocente" id="botonCrear">
-                            <i class="bi bi-plus-circle"></i> Crear
-                        </button>
-                </div>
-
+            <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Info Personal</h5>
+                <p class="card-text">
+                    <tr>
+                        <th>Nombre: </th>
+                        <td><?php echo $nombre; ?></td>
+                        <th>Direccion: </th>
+                        <td><?php echo $direccion; ?></td>
+                        <th>Correo: </th>
+                    </tr>
+                </p>
+                <a href="#" class="btn btn-primary">Aceptar</a>
+                <a href="#" class="btn btn-primary">Rechazar</a>
+            </div>
             </div>
         </div>
-        <br />
-        <br />
-
-        <div class="table-responsive">
-            <table id="datos_CuentaCobroDeDocente" class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Fecha</th>
-                        <th>pago_excepcional</th>
-                        <th>valor_hora</th>
-                        <th>horas_trabajadas</th>
-                        <th>monto</th>
-                        <th>Docente</th>
-                        <th>Estado</th>
-                        <th>Notas</th>
-                        <th>Tipo de pago</th>
-                        <th>Metodo de pago</th>
-                        <th>Modificar</th>
-                    </tr>
-                </thead>
-                
-            </table>
+        <div class="col-sm-6">
+            <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">En uso</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            </div>
+            </div>
+            </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-12">
+
+                <div class="table-responsive">
+                    <table id="datos_CuentaCobroDeDocente" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Fecha</th>
+                                <th>pago_excepcional</th>
+                                <th>valor_hora</th>
+                                <th>horas_trabajadas</th>
+                                <th>monto</th>
+                                <th>Docente</th>
+                                <th>Estado</th>
+                                <th>Notas</th>
+                                <th>Tipo de pago</th>
+                                <th>Metodo de pago</th>
+                                <th>Modificar</th>
+                            </tr>
+                        </thead>
+                        
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
     <!-- Modal -->
     <div class="modal fade" id="modalCuentaDocente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

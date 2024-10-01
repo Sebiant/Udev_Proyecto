@@ -3,7 +3,7 @@ $(document).ready(function() {
         processing: true,
         serverSide: true,
         ajax: {
-            url: "cuenta-de-cobro-docente_controlador.php",
+            url: "CuentaDeCobroDocente_controlador.php",
             type: "POST",
             dataSrc: 'data'
         },
@@ -38,7 +38,7 @@ $(document).ready(function() {
         var idCuenta = data.id_cuenta;
 
         $.ajax({
-            url: 'cuenta-de-cobro-docente_controlador.php?accion=modificar',
+            url: 'CuentaDeCobroDocente_controlador.php?accion=modificar',
             type: 'POST',
             data: { id_cuenta: idCuenta},
             success: function(response) {
@@ -50,7 +50,11 @@ $(document).ready(function() {
                 $('#editForm [name="horas_trabajadas"]').val(cuenta.horas_trabajadas);
                 $('#editForm [name="monto"]').val(cuenta.monto);
                 $('#editForm [name="id_docente"]').val(cuenta.id_docente);
-                $('#editForm [name="estado"]').prop('checked', cuenta.estado === "Sí");
+                $('#editForm [name="estado"]').val(cuenta.estado);
+                $('#editForm [name="Notas"]').val(cuenta.Notas);
+                $('#editForm [name="tipo_de_pago"]').val(cuenta.tipo_de_pago);
+                $('#editForm [name="metodo_pago"]').val(cuenta.metodo_pago);
+                
                 $('#editModal').modal('show');
             },
             error: function() {
@@ -62,7 +66,7 @@ $(document).ready(function() {
         e.preventDefault();
 
         $.ajax({
-            url: 'cuenta-de-cobro-docente_controlador.php?accion=editar',
+            url: 'CuentaDeCobroDocente_controlador.php?accion=editar',
             type: 'POST',
             data: $(this).serialize(),
             success: function(response) {

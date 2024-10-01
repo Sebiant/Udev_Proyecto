@@ -16,7 +16,7 @@ switch ($accion) {
         $tipo_pago = $_POST['tipo_de_pago'];
         $metodo_pago = $_POST['metodo_pago'];
 
-        $sql = "INSERT INTO `cuenta-de-cobro-docente` (fecha, pago_excepcional, valor_hora, horas_trabajadas, monto, id_docente, estado, notas, tipo_de_pago, metodo_pago) 
+        $sql = "INSERT INTO CuentaDeCobroDocente (fecha, pago_excepcional, valor_hora, horas_trabajadas, monto, id_docente, estado, notas, tipo_de_pago, metodo_pago) 
         VALUES ('$fecha','$pago_excepcional','$valor_hora','$horas_trabajadas','$monto','$id_docente','$estado','$nota','$tipo_pago','$metodo_pago')";
         if ($conn ->query($sql)===TRUE) {
             echo "Registro exitoso";
@@ -28,7 +28,7 @@ switch ($accion) {
     case 'editar' :
         $id_cuenta = $_POST['id_cuenta'];
 
-        $sql_select = "SELECT * FROM cuenta-de-cobro-docente WHERE id_cuenta = '$id_cuenta'";
+        $sql_select = "SELECT * FROM CuentaDeCobroDocente WHERE id_cuenta = '$id_cuenta'";
         $result = $conn->query($sql_select);
 
         if ($result -> num_rows > 0) {
@@ -46,7 +46,7 @@ switch ($accion) {
             $metodo_pago = isset($_POST['metodo_pago']) ? $_POST['metodo_pago'] : $cuenta['metodo_pago'];
 
 
-            $sql_update = "UPDATE 'cuenta-de-cobro-docente' SET
+            $sql_update = "UPDATE CuentaDeCobroDocente SET
                             fecha='$fecha',
                             pago_excepcional='$pago_excepcional',
                             valor_hora='$valor_hora',
@@ -69,25 +69,17 @@ switch ($accion) {
         }
         break;
 
-    case 'listar':
-        $sql = "SELECT * FROM 'cuenta-de-cobro-docente'";
+    default:
+        $sql = "SELECT * FROM CuentaDeCobroDocente";
         $result = $conn->query($sql);
 
             $data = [];
-
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    $data[] = $row;
-                }
-            }
     
             header('Content-Type: application/json');
             echo json_encode(['data' => $data]);
             break;
 
-    default:
-        echo "Acción no válida.";
-        break;
+    
     }
     $conn->close();
 ?>
