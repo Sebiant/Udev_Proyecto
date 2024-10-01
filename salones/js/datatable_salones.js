@@ -10,9 +10,15 @@ $(document).ready(function() {
         columns: [
             { "data": "id_salon" },
             { "data": "nombre_salon" },
-            { "data": "cantidad" },
+            { "data": "capacidad" },
             { "data": "descripcion" },
-            { "data": "id_institucion" },
+            { "data": null,
+                "render": function (data, type, row){
+                    return row.nombres;
+                }
+
+            },
+
             { "data": "estado" },
             {
                 data: null,
@@ -39,7 +45,7 @@ $(document).ready(function() {
                 var Salon = response.data[0];
                 $('#editForm [name="id_salon"]').val(Salon.id_salon);
                 $('#editForm [name="nombre_salon"]').val(Salon.nombre_salon);
-                $('#editForm [name="cantidad"]').val(Salon.cantidad);
+                $('#editForm [name="cantidad"]').val(Salon.capacidad);
                 $('#editForm [name="descripcion"]').val(Salon.descripcion);
                 $('#editForm [name="id_institucion"]').val(Salon.id_institucion);
                 $('#editForm [name="estado"]').prop('checked', Salon.estado === "Sí");

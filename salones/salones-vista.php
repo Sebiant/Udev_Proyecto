@@ -24,11 +24,11 @@
             <table id="datos_salones" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        <th>Id Salon</th>
                         <th>Nombre_salon</th>
                         <th>Capacidad</th>
                         <th>Descripcion</th>
-                        <th>Id_institucion</th>
+                        <th>Instituciones</th>
                         <th>Estado</th>
                         <th>Modificar</th>
                         <th>Borrar</th>
@@ -66,8 +66,19 @@
             <input type="text" name="descripcion" id="descripcion" class="form-control">
           </div>
           <div class="mb-3">
-            <label for="id_instituto" class="form-label">Id_institucion:</label>
-            <input type="number" name="id_institucion" id="id_institucion" class="form-control">
+            <label for="id_institucion" class="form-label">Instituciones:</label>
+            <select id="institucion" name="id_institucion" required>
+                            <option value="">-- Selecciona una institucion --</option>
+                            <?php
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    echo '<option value="' . $row['id_institucion'] . '">' . $row['nombres'] . " " . '</option>';
+                                }
+                            } else {
+                                echo '<option value="">No hay instituciones disponibles</option>';
+                            }
+                            ?>
+                        </select>  
           </div>
           <div class="form-check mb-3">
             <input type="checkbox" class="form-check-input" name="estado" id="estado">
@@ -109,8 +120,19 @@
                         <input type="text"   class="form-control" name="descripcion">
                     </div>
                     <div class="mb-3">
-                        <label for="id_instituto" class="form-label">Id_institucion:</label>
-                        <input type="number" class="form-control" name="id_institucion">
+                    <label for="id_institucion" class="form-label">Instituciones:</label>
+                        <select id="institucion" name="id_institucion" required>
+                            <option value="">-- Selecciona una institucion --</option>
+                            <?php
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    echo '<option value="' . $row['id_institucion'] . '">' . $row['nombres'] . " " . '</option>';
+                                }
+                            } else {
+                                echo '<option value="">No hay instituciones disponibles</option>';
+                            }
+                            ?>
+                        </select>  
                     </div>
                     <div class="form-check mb-3">
                         <input type="checkbox" class="form-check-input" name="estado" id="estado">
