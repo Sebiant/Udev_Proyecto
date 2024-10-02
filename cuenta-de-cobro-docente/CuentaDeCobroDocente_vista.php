@@ -5,20 +5,20 @@
 
 <div class="container">
         <h1 class="text-center">Cuenta Docente</h1>
-
+        
         <div class="row">
-            <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="col-sm-5 mb-2 mb-sm-0">
             <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Info Personal</h5>
                 <p class="card-text">
-                    <tr>
-                        <th>Nombre: </th>
-                        <td><?php echo $nombre; ?></td>
-                        <th>Direccion: </th>
-                        <td><?php echo $direccion; ?></td>
-                        <th>Correo: </th>
-                    </tr>
+                <div class="card" style="width: 18rem;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">An item</li>
+                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">A third item</li>
+                    </ul>
+                </div>
                 </p>
                 <a href="#" class="btn btn-primary">Aceptar</a>
                 <a href="#" class="btn btn-primary">Rechazar</a>
@@ -29,7 +29,15 @@
             <div class="card">
             <div class="card-body">
                 <h5 class="card-title">En uso</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text">
+                <ul class="list-group">
+                    <li class="list-group-item">A first item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                    <li class="list-group-item">A fourth item</li>
+                    <li class="list-group-item">And a fifth one</li>
+                </ul>
+                </p>
             </div>
             </div>
             </div>
