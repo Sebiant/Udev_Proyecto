@@ -72,8 +72,7 @@ switch ($accion) {
         break;
 
     default:
-        // Consulta para obtener los programadores
-        $sql = "SELECT id_programador, fecha, hora_inicio, hora_salida, salon, docente, materia FROM programadores WHERE estado = 1"; // Filtrando solo los activos
+        $sql = "SELECT * FROM programador";
         $result = $conn->query($sql);
 
         $data = [];

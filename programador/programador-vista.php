@@ -92,6 +92,7 @@
 </style>
 
 <div class="container">
+    <h2>Programar Clases</h2>
     <form id="programadorForm">
         <div class="main">
             <div class="left">
@@ -114,7 +115,7 @@
             <div class="right">
                 <h2>Docentes Disponibles</h2>
                 <div class="table-responsive">
-                    <select id="docente" name="id_docente" required>
+                    <select id="docente" name="id_docente" class="form-control" required>
                         <option value="">-- Selecciona un docente --</option>
                         <?php
                         if ($result->num_rows > 0) {
@@ -135,7 +136,7 @@
     </form>
     <br>
     <div class="header">
-        <h1>Clases programadas</h1>
+        <h2>Clases programadas</h2>
         <div class="table-responsive">
             <table id="datos_docente" class="table table-bordered table-striped">
                 <thead>
