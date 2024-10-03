@@ -1,12 +1,10 @@
 <?php
 include '../conexion.php';
 
-// Obtener la acción de la solicitud (puede ser 'crear', 'editar', 'eliminar', 'activar', o 'default')
 $accion = isset($_GET['accion']) ? $_GET['accion'] : 'default';
 
 switch ($accion) {
     case 'crear':
-        // Lógica para crear un nuevo programador
         $fecha = $_POST['fecha'];
         $hora_inicio = $_POST['hora_inicio'];
         $hora_salida = $_POST['hora_salida'];
@@ -25,7 +23,6 @@ switch ($accion) {
         break;
 
     case 'editar':
-        // Lógica para editar un programador existente
         $id_programador = $_POST['id_programador'];
         $fecha = $_POST['fecha'];
         $hora_inicio = $_POST['hora_inicio'];
@@ -46,7 +43,6 @@ switch ($accion) {
         break;
 
     case 'eliminar':
-        // Lógica para eliminar un programador existente
         $id_programador = $_POST['id_programador'];
 
         $sql = "DELETE FROM programadores WHERE id_programador='$id_programador'";
@@ -58,21 +54,23 @@ switch ($accion) {
         }
         break;
 
-    case 'activar':
-        // Lógica para activar un programador existente
-        $id_programador = $_POST['id_programador'];
-
-        $sql = "UPDATE programadores SET estado = 1 WHERE id_programador='$id_programador'";
-
-        if ($conn->query($sql) === TRUE) {
-            echo json_encode(['status' => 'success', 'message' => 'Programador activado con éxito.']);
-        } else {
-            echo json_encode(['status' => 'error', 'message' => 'Error al activar el programador: ' . $conn->error]);
-        }
-        break;
-
     default:
-        $sql = "SELECT * FROM programador";
+        $conn->query("SET lc_time_names = 'es_ES'");
+
+        $sql = "SELECT
+                    p.id_programador, 
+                    DATE_FORMAT(p.fecha, '%d/%M/%Y') AS fecha, 
+                    DATE_FORMAT(p.hora_inicio, '%h:%i %p') AS hora_inicio, 
+                    DATE_FORMAT(p.hora_salida, '%h:%i %p') AS hora_salida, 
+                    d.nombres,
+                    d.apellidos,
+                    s.nombre_salon, 
+                    m.nombre 
+                FROM programador p
+                JOIN docentes d ON p.id_docente = d.id_docente
+                JOIN salones s ON p.id_salon = s.id_salon
+                JOIN materias m ON p.id_materia = m.id_materia";
+
         $result = $conn->query($sql);
 
         $data = [];

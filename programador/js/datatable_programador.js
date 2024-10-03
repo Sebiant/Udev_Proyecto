@@ -9,9 +9,22 @@ $(document).ready(function() {
             { "data": "fecha" },
             { "data": "hora_inicio" },
             { "data": "hora_salida" },
-            { "data": "id_salon" },
-            { "data": "id_docente" },
-            { "data": "id_materia" },
+            { "data": null,
+                "render": function(data, type, row){
+                    return row.nombre_salon;
+                }
+             },
+            { 
+                "data": null,
+                "render": function(data, type, row) {
+                    return row.nombres + ' ' + row.apellidos;
+                }
+            },
+            { "data": null,
+                "render": function(data, type, row){
+                    return row.nombre;
+                }
+             },
             {
                 "data": "id_programador",
                 "render": function(data) {
