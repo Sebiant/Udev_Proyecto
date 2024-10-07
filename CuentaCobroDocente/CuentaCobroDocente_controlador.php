@@ -70,14 +70,32 @@ switch ($accion) {
         break;
 
     default:
-        $sql = "SELECT * FROM CuentaDeCobroDocente";
+        $sql = "SELECT c.id_cuenta, c.fecha, c.pago_excepcional, c.valor_hora, c.horas_trabajadas, c.monto, d.nombres, d.apellidos, c.estado
+        FROM cuentas_cobro c
+        JOIN docentes d ON c.id_docente = d.id_docente
+        WHERE d.id_docente = 2";
+
         $result = $conn->query($sql);
 
-            $data = [];
-    
+        if ($result === false) {
+            // Error en la consulta
             header('Content-Type: application/json');
-            echo json_encode(['data' => $data]);
+            echo json_encode(['error' => 'Error en la consulta SQL']);
             break;
+        }
+
+        $data = [];
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+            $row['pago_excepcional'] = $row['pago_excepcional'] ?"Si":"No";
+                $data[] = $row;
+            }
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode(['data' => $data]);
+        break;
 
     
     }

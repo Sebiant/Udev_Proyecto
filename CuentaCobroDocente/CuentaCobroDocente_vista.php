@@ -7,16 +7,15 @@
         <h1 class="text-center">Cuenta Docente</h1>
         
         <div class="row">
-            <div class="col-sm-5 mb-2 mb-sm-0">
+            <div class="col-sm-6">
             <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Info Personal</h5>
+                <h5 class="card-title">Materias</h5>
                 <p class="card-text">
-                <div class="card" style="width: 18rem;">
+                <div class="card">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
+                        <li class="list-group-item">Matemáticas</li>
+                        <li class="list-group-item">Álgebra</li>                        
                     </ul>
                 </div>
                 </p>
@@ -28,47 +27,49 @@
         <div class="col-sm-6">
             <div class="card">
             <div class="card-body">
-                <h5 class="card-title">En uso</h5>
+                <h5 class="card-title">Clases Programadas</h5>
                 <p class="card-text">
                 <ul class="list-group">
-                    <li class="list-group-item">A first item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
-                    <li class="list-group-item">A fourth item</li>
-                    <li class="list-group-item">And a fifth one</li>
+                    <li class="list-group-item">Matemáticas - lunes 14 oct - 10:00am - Sistemas</li>
+                    <li class="list-group-item">Álgebra - lunes 14 oct - 15:00pm - Diseño Gráfico</li>
+                    <li class="list-group-item">Matemáticas - miercoles 16 oct - 16:00pm - Deportes</li>
+                    <li class="list-group-item">Álgebra - viernes 18 oct - 8:00am - Sistemas</li>
+                    <li class="list-group-item">Matemáticas - viernes 18 oct - 7:00pm - Diseño Gráfico</li>
+                    <li class="list-group-item">Álgebra - sabado 20 oct - 8:00am - Deportes</li>
                 </ul>
                 </p>
             </div>
             </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
+        <div class="card">
 
-                <div class="table-responsive">
-                    <table id="datos_CuentaCobroDeDocente" class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Fecha</th>
-                                <th>pago_excepcional</th>
-                                <th>valor_hora</th>
-                                <th>horas_trabajadas</th>
-                                <th>monto</th>
-                                <th>Docente</th>
-                                <th>Estado</th>
-                                <th>Notas</th>
-                                <th>Tipo de pago</th>
-                                <th>Metodo de pago</th>
-                                <th>Modificar</th>
-                            </tr>
-                        </thead>
-                        
-                        </table>
+            <div class="row">
+                <div class="col-12">
+    
+                    <div class="table-responsive">
+                        <table id="datos_CuentaCobroDocente" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Fecha</th>
+                                    <th>pago_excepcional</th>
+                                    <th>valor_hora</th>
+                                    <th>horas_trabajadas</th>
+                                    <th>monto</th>
+                                    <th>Docente</th>
+                                    <th>Estado</th> 
+                                    <th>Materias</th>                               
+                                    <th>Modificar</th>
+                                </tr>
+                            </thead>
+                            
+                            </table>
+                        </div>
                     </div>
                 </div>
+    
             </div>
-
         </div>
 
     <!-- Modal -->
@@ -113,26 +114,10 @@
               <option value="pendiente">Pendiente</option>
               <option value="pagado">Pagado</option>
               <option value="cancelado">Cancelado</option>
+              <option value="rechazada_por_institucion">rechazado por institucion</option>
+              <option value="rechazada_por_docente">rechazada por docente</option>
             </select>
-            <div class="mb-3">
-            <label for="notas" class="form-label">Notas:</label>
-            <textarea name="notas" id="notas" class="form-control"></textarea>
-          </div>
-          <div class="mb-3">
-            <label for="tipo_pago" class="form-label">Tipo de pago:</label>
-            <select name="tipo_pago" id="tipo_pago" class="form-control">
-              <option value="hora">Hora</option>
-              <option value="dia">Día</option>
-              <option value="mes">Mes</option>
-            </select> 
-          </div>
-          <div class="mb-3">
-            <label for="metodo_pago" class="form-label">Método de pago:</label>
-            <select name="metodo_pago" id="metodo_pago" class="form-control">
-              <option value="efectivo">Efectivo</option>
-              <option value="transferencia">Transferencia</option>
-              <option value="cheque">Cheque</option>
-            </select>
+            
           </div>
           </div>
           <div class="modal-footer">
@@ -217,7 +202,7 @@
     include_once '../componentes/footer.php';
     ?>
     <script src="js/consultas_cuenta-de-cobro-docente.js"></script>
-    <script src="js/datatable_cuenta-de-cobro-docente.js"></script>
+    <script src="js/datatable_CuentaCobroDocente.js"></script>
 
 
 

@@ -1,9 +1,9 @@
 $(document).ready(function() {
-    var table = $('#datos_CuentaCobroDeDocente').DataTable({
+    var table = $('#datos_CuentaCobroDocente').DataTable({
         processing: true,
         serverSide: true,
         ajax: {
-            url: "CuentaDeCobroDocente_controlador.php",
+            url: "CuentaCobroDocente_controlador.php",
             type: "POST",
             dataSrc: 'data'
         },
@@ -14,12 +14,13 @@ $(document).ready(function() {
             { "data": "valor_hora" },
             { "data": "horas_trabajadas" },
             { "data": "monto" },
-            { "data": "id_docente" },
+            { "data": null,
+                "render": function(data,type,row) {
+                    return row.nombres + ' ' + row.apellidos;
+                }
+            },
             { "data": "estado" },
-            { "data": "Notas"},
-            { "data": "tipo_de_pago" },
-            { "data": "metodo_pago"},
-            
+                        
             {
                 data: null,
                 defaultContent: '<button class="btn btn-primary w-100 btn-modify">Modificar</button>',
@@ -33,12 +34,12 @@ $(document).ready(function() {
         ]
     });
     
-    $('#datos_CuentaCobroDeDocente').on('click', '.btn-modify', function() {
+    $('#datos_CuentaCobroDocente').on('click', '.btn-modify', function() {
         var data = table.row($(this).parents('tr')).data();
         var idCuenta = data.id_cuenta;
 
         $.ajax({
-            url: 'CuentaDeCobroDocente_controlador.php?accion=modificar',
+            url: 'CuentaCobroDocente_controlador.php?accion=modificar',
             type: 'POST',
             data: { id_cuenta: idCuenta},
             success: function(response) {
@@ -51,9 +52,7 @@ $(document).ready(function() {
                 $('#editForm [name="monto"]').val(cuenta.monto);
                 $('#editForm [name="id_docente"]').val(cuenta.id_docente);
                 $('#editForm [name="estado"]').val(cuenta.estado);
-                $('#editForm [name="Notas"]').val(cuenta.Notas);
-                $('#editForm [name="tipo_de_pago"]').val(cuenta.tipo_de_pago);
-                $('#editForm [name="metodo_pago"]').val(cuenta.metodo_pago);
+                
                 
                 $('#editModal').modal('show');
             },
@@ -66,7 +65,7 @@ $(document).ready(function() {
         e.preventDefault();
 
         $.ajax({
-            url: 'CuentaDeCobroDocente_controlador.php?accion=editar',
+            url: 'CuentaCobroDocente_controlador.php?accion=editar',
             type: 'POST',
             data: $(this).serialize(),
             success: function(response) {
@@ -79,6 +78,25 @@ $(document).ready(function() {
             }
         });
     });
+     // Agregar evento de clic al botón de aceptar
+     $('#btn-aceptar').on('click', function() {
+        // Llamar a la función que actualiza el DataTable
+        actualizarDataTable();
+    });
+
+    // Función que actualiza el DataTable
+    function actualizarDataTable() {
+        // Obtener los datos de la cuenta de cobro
+        var fecha = $('#fecha').val();
+        var pago_excepcional = $('#pago_excepcional').val();
+        var valor_hora = $('#valor_hora').val();
+        var horas_trabajadas = $('#horas_trabajadas').val();
+        var monto = $('#monto').val();
+        var id_docente = $('#id_docente').val();
+        var estado = $('#estado').val();
+        // Actualizar el DataTable con los datos de la cuenta de cobro
+        table.ajax.reload();
+    }
 
 
     
