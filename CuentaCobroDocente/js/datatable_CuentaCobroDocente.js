@@ -21,16 +21,6 @@ $(document).ready(function() {
             },
             { "data": "estado" },
                         
-            {
-                data: null,
-                defaultContent: '<button class="btn btn-primary w-100 btn-modify">Modificar</button>',
-                orderable: false
-            },
-            {
-                data: null,
-                defaultContent: '<button class="btn btn-danger w-100 btn-delete">Borrar</i></button>',
-                orderable: false
-            }
         ]
     });
     

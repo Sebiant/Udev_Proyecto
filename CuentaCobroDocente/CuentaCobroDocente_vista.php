@@ -2,9 +2,15 @@
     include_once '../componentes/header.php';
     include_once '../conexion.php';
 
-    // Consulta para obtener las materias desde la base de datos
-    $sql = "SELECT nombres FROM docentes";  // Asumiendo que tienes una tabla llamada 'materias'
+    $conn -> query("SET lc_time_names = 'es_ES'");
+    // Consulta para obtener las cuentas de cobro desde la base de datos
+    $sql = "SELECT d.nombres, d.apellidos, date_format(c.fecha, '%M') AS fecha, SUM(a.horas_trabajadas) AS horas_totales 
+        FROM docentes d
+        JOIN cuentas_cobro c ON d.id_docente = c.id_docente
+        JOIN asistencias a ON d.id_docente = a.id_docente
+        WHERE d.id_docente = 1";
     $resultado = $conn->query($sql);
+
 ?>
 
 <div class="container">
@@ -14,18 +20,28 @@
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Materias</h5>
+                    <h5 class="card-title">Cuenta de cobro actual</h5>
                     <p class="card-text">
                         <div class="card">
                             <ul class="list-group list-group-flush">
                                 <?php
                                 // Iterar sobre los resultados de la consulta y generar los elementos de la lista
                                 if ($resultado->num_rows > 0) {
-                                    while ($fila = $resultado->fetch_assoc()) {
-                                        echo '<li class="list-group-item">' . $fila['nombres'] . '</li>';
-                                    }
+                                    $fila = $resultado->fetch_assoc();
+                                     
+                                    $valor_hora = 20000;
+                                    $total = $fila['horas_totales'] * $valor_hora;
+                                        ?>
+
+                                            <h5>Nombre: <?php echo $fila ['nombres'].' '.$fila['apellidos'];?></h5>
+                                            <h5>Mes: <?php echo $fila ['fecha'];?></h5>
+                                            <h5>Horas:<?php echo  $fila['horas_totales'];?></h5>
+                                            <h5>Total: <?php echo $total;?></h5>
+
+                                       <?php
+                                    
                                 } else {
-                                    echo '<li class="list-group-item">No hay materias disponibles</li>';
+                                    echo '<li class="list-group-item">No hay datos disponibles</li>';
                                 }
                                 ?>
                             </ul>
@@ -42,21 +58,58 @@
                     <h5 class="card-title">Clases Programadas</h5>
                     <p class="card-text">
                     <ul class="list-group">
-                        <li class="list-group-item">Matemáticas - lunes 14 oct - 10:00am - Sistemas</li>
-                        <?php
+                    <?php
+    // Consulta para obtener las materias desde la base de datos
+        $sql = "SELECT DATE_FORMAT(p.fecha, '%M') AS fecha, p.hora_inicio, p.hora_salida, m.id_materia, s.id_salon
+            FROM programador p
+            JOIN materias m ON p.id_materia = m.id_materia
+            JOIN salones s ON p.id_salon = s.id_salon";
 
-                         // Consulta para obtener las materias desde la base de datos
-    $sql = "SELECT nombre FROM materias";  // Asumiendo que tienes una tabla llamada 'materias'
-    $resultado = $conn->query($sql);
-                                // Iterar sobre los resultados de la consulta y generar los elementos de la lista
+        $resultado = $conn->query($sql);
+
+        // Verificar si hubo error en la consulta
+    if (!$resultado) {
+        die("Error en la consulta SQL: " . $conn->error);
+    }
+
+            ?>
+
+                <div class="container">
+
+                    
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Hora Inicio</th>
+                                    <th>Hora Salida</th>
+                                    <th>Materia</th>
+                                    <th>Salón</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                // Iterar sobre los resultados de la consulta y generar las filas de la tabla
                                 if ($resultado->num_rows > 0) {
                                     while ($fila = $resultado->fetch_assoc()) {
-                                        echo '<li class="list-group-item">' . $fila['nombre'] . '</li>';
+                                        echo '<tr>';
+                                        echo '<td>' . $fila['fecha'] . '</td>';
+                                        echo '<td>' . $fila['hora_inicio'] . '</td>';
+                                        echo '<td>' . $fila['hora_salida'] . '</td>';
+                                        echo '<td>' . $fila['id_materia'] . '</td>';
+                                        echo '<td>' . $fila['id_salon'] . '</td>';
+                                        echo '</tr>';
                                     }
                                 } else {
-                                    echo '<li class="list-group-item">No hay materias disponibles</li>';
+                                    echo '<tr><td colspan="5" class="text-center">No hay materias disponibles</td></tr>';
                                 }
                                 ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
                     </ul>
                     </p>
                 </div>
@@ -80,8 +133,6 @@
                                 <th>monto</th>
                                 <th>Docente</th>
                                 <th>Estado</th>
-                                <th>Materias</th>
-                                <th>Modificar</th>
                             </tr>
                         </thead>
 
